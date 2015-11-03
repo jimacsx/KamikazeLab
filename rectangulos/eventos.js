@@ -406,6 +406,50 @@ $(document).ready(function(){
 		}, tiempo, 'swing');
 	}
 
+	function animar_10(){
+		$contenedor.children('#cuadro1').animate({
+			top: 0,
+			left: 0,
+			width: 200 +'px',
+			height: 300 +'px'
+		}, tiempo, 'swing');
+
+		$contenedor.children('#cuadro2').animate({
+			top: 0,
+			left: 200 +'px',
+			width: 100 +'px',
+			height: 100 +'px'
+		}, tiempo, 'swing');
+
+		$contenedor.children('#cuadro3').animate({
+			top: 0,
+			left: 300 +'px',
+			width: 100 +'px',
+			height: 100 +'px'
+		}, tiempo, 'swing');
+
+		$contenedor.children('#cuadro4').animate({
+			top: 100 +'px',
+			left: 200 +'px',
+			width: 200 +'px',
+			height: 100 +'px'
+		}, tiempo, 'swing');
+
+		$contenedor.children('#cuadro5').animate({
+			top: 200 +'px',
+			left: 200 +'px',
+			width: 100 +'px',
+			height: 100 +'px'
+		}, tiempo, 'swing');
+
+		$contenedor.children('#cuadro6').animate({
+			top: 200 +'px',
+			left: 300 +'px',
+			width: 100 +'px',
+			height: 100 +'px'
+		}, tiempo, 'swing');
+	}
+
 	function animar() {
 		animar_1();
 		animar_2();
@@ -416,6 +460,7 @@ $(document).ready(function(){
 		animar_7();
 		animar_8();
 		animar_9();
+		animar_10();
 	}
 
 	$('#miBoton_animar').click(function() {
