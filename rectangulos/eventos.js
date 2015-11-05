@@ -9,77 +9,109 @@ $(document).ready(function(){
 
 	var tiempo = 1000;
 
-	var myArray = [
-						[ 0, 0, 100, 100, 100, 0, 100, 100, 0, 100, 200, 200, 0, 300, 100, 100, 100, 300, 100, 100, 200, 0, 400, 100 ],
-						[ 0, 0, 200, 200, 200, 0, 100, 100, 200, 100, 100, 100, 0, 200, 100, 100, 0, 300, 100, 100, 100, 200, 200, 200 ],
-						[ 0, 0, 400, 100,  100, 0, 100, 100, 100, 100, 100, 100, 100, 200, 100, 100, 100, 300, 100, 100, 200, 0, 400, 100],
-						[ 0, 0, 100, 100, 100, 0, 100, 200, 0, 100, 200, 200, 0, 300, 100, 100, 200, 100, 200, 100, 100, 300, 100, 200],
-						[ 0, 0, 100, 300, 0, 100, 100, 300, 0, 200, 100, 100, 100, 200, 100, 100, 200, 200, 100, 100, 0, 300, 100, 300],
-						[ 0, 0, 300, 100, 0, 300, 100, 100, 100, 0, 200, 100, 100, 200, 200, 100, 200, 0, 300, 100, 200, 300, 100, 100],
-						[ 0, 0, 200, 100, 0, 200, 200, 100, 100, 0, 200, 100, 100, 200, 200, 100, 200, 0, 200, 100, 200, 200, 200, 100],
-						[ 0, 0, 300, 100, 0, 300, 100, 300, 100, 0, 100, 200, 100, 100, 200, 100, 200, 100, 100, 100, 200, 200, 100, 100],
-						[ 0, 0, 200, 100, 100, 0, 100, 200, 100, 100, 100, 200, 0, 200, 100, 200, 0, 300, 100, 200, 200, 200, 200, 100],
-						[ 0, 0, 200, 300, 0, 200, 100, 100, 0, 300, 100, 100, 100, 200, 200, 100, 200, 200, 100, 100, 200, 300, 100, 100]
-					  ];
+	var numAnimacion=0;
 
-	var num_animacion=0;
-	var datos;
-
-	function obtener_datos_de_animacion() {
-		return myArray[num_animacion];
-	}
+	var misAnimacionesJSON = 	[
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "100px", "height":"100px"},
+								"cuadro2": {"top": "100px", "left": "0", "width": "100px", "height":"100px"},
+								"cuadro3": {"top": "0", "left": "100px", "width": "200px", "height":"200px"},
+								"cuadro4": {"top": "0", "left": "300px", "width": "100px", "height":"100px"},
+								"cuadro5": {"top": "100px", "left": "300px", "width": "100px", "height":"100px"},
+								"cuadro6": {"top": "200px", "left": "0", "width": "400px", "height":"100px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "200px", "height":"200px"},
+								"cuadro2": {"top": "200px", "left": "0", "width": "100px", "height":"100px"},
+								"cuadro3": {"top": "200px", "left": "100px", "width": "100px", "height":"100px"},
+								"cuadro4": {"top": "0", "left": "200px", "width": "100px", "height":"100px"},
+								"cuadro5": {"top": "0", "left": "300px", "width": "100px", "height":"100px"},
+								"cuadro6": {"top": "100px", "left": "200px", "width": "200px", "height":"200px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "400px", "height":"100px"},
+								"cuadro2": {"top": "100px", "left": "0", "width": "100px", "height":"100px"},
+								"cuadro3": {"top": "100px", "left": "100px", "width": "100px", "height":"100px"},
+								"cuadro4": {"top": "100px", "left": "200px", "width": "100px", "height":"100px"},
+								"cuadro5": {"top": "100px", "left": "300px", "width": "100px", "height":"100px"},
+								"cuadro6": {"top": "200px", "left": "0", "width": "400px", "height":"100px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "100px", "height":"100px"},
+								"cuadro2": {"top": "100px", "left": "0", "width": "100px", "height":"200px"},
+								"cuadro3": {"top": "0", "left": "100px", "width": "200px", "height":"200px"},
+								"cuadro4": {"top": "0", "left": "300px", "width": "100px", "height":"100px"},
+								"cuadro5": {"top": "200px", "left": "100px", "width": "200px", "height":"100px"},
+								"cuadro6": {"top": "100px", "left": "300px", "width": "100px", "height":"200px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "100px", "height":"300px"},
+								"cuadro2": {"top": "0", "left": "100px", "width": "100px", "height":"300px"},
+								"cuadro3": {"top": "0", "left": "200px", "width": "100px", "height":"100px"},
+								"cuadro4": {"top": "100px", "left": "200px", "width": "100px", "height":"100px"},
+								"cuadro5": {"top": "200px", "left": "200px", "width": "100px", "height":"100px"},
+								"cuadro6": {"top": "0", "left": "300px", "width": "100px", "height":"300px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "300px", "height":"100px"},
+								"cuadro2": {"top": "0", "left": "300px", "width": "100px", "height":"100px"},
+								"cuadro3": {"top": "100px", "left": "0", "width": "200px", "height":"100px"},
+								"cuadro4": {"top": "100px", "left": "200px", "width": "200px", "height":"100px"},
+								"cuadro5": {"top": "200px", "left": "0", "width": "300px", "height":"100px"},
+								"cuadro6": {"top": "200px", "left": "300px", "width": "100px", "height":"100px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "200px", "height":"100px"},
+								"cuadro2": {"top": "0", "left": "200px", "width": "200px", "height":"100px"},
+								"cuadro3": {"top": "100px", "left": "0", "width": "200px", "height":"100px"},
+								"cuadro4": {"top": "100px", "left": "200px", "width": "200px", "height":"100px"},
+								"cuadro5": {"top": "200px", "left": "0", "width": "200px", "height":"100px"},
+								"cuadro6": {"top": "200px", "left": "200px", "width": "200px", "height":"100px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "300px", "height":"100px"},
+								"cuadro2": {"top": "0", "left": "300px", "width": "100px", "height":"300px"},
+								"cuadro3": {"top": "100px", "left": "0", "width": "100px", "height":"200px"},
+								"cuadro4": {"top": "100px", "left": "100px", "width": "200px", "height":"100px"},
+								"cuadro5": {"top": "200px", "left": "100px", "width": "100px", "height":"100px"},
+								"cuadro6": {"top": "200px", "left": "200px", "width": "100px", "height":"100px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "200px", "height":"100px"},
+								"cuadro2": {"top": "100px", "left": "0", "width": "100px", "height":"200px"},
+								"cuadro3": {"top": "100px", "left": "100px", "width": "100px", "height":"200px"},
+								"cuadro4": {"top": "0", "left": "200px", "width": "100px", "height":"200px"},
+								"cuadro5": {"top": "0", "left": "300px", "width": "100px", "height":"200px"},
+								"cuadro6": {"top": "200px", "left": "200px", "width": "200px", "height":"100px"}
+							},
+							{
+								"cuadro1": {"top": "0", "left": "0", "width": "200px", "height":"300px"},
+								"cuadro2": {"top": "0", "left": "200px", "width": "100px", "height":"100px"},
+								"cuadro3": {"top": "0", "left": "300px", "width": "100px", "height":"100px"},
+								"cuadro4": {"top": "100px", "left": "200px", "width": "200px", "height":"100px"},
+								"cuadro5": {"top": "200px", "left": "200px", "width": "100px", "height":"100px"},
+								"cuadro6": {"top": "200px", "left": "300px", "width": "100px", "height":"100px"}
+							}
+						];
 
 	function animar() {
-		console.log("animación num: "+num_animacion);
-		datos = obtener_datos_de_animacion();
-		if (num_animacion < 10) {
-			$cuadro1.animate({
-				top: datos[0] +'px',
-				left: datos[1] +'px',
-				width: datos[2] +'px',
-				height: datos[3] +'px'
-			}, tiempo, 'swing');
+		if (numAnimacion < misAnimacionesJSON.length) {
+			$cuadro1.animate(misAnimacionesJSON[numAnimacion].cuadro1, tiempo, 'swing');
 
-			$cuadro2.animate({
-				top: datos[4] +'px',
-				left: datos[5] +'px',
-				width: datos[6] +'px',
-				height: datos[7] +'px'
-			}, tiempo, 'swing');
+			$cuadro2.animate(misAnimacionesJSON[numAnimacion].cuadro2, tiempo, 'swing');
 
-			$cuadro3.animate({
-				top: datos[8] +'px',
-				left: datos[9] +'px',
-				width: datos[10] +'px',
-				height: datos[11] +'px'
-			}, tiempo, 'swing');
+			$cuadro3.animate(misAnimacionesJSON[numAnimacion].cuadro3, tiempo, 'swing');
 
-			$cuadro4.animate({
-				top: datos[12] +'px',
-				left: datos[13] +'px',
-				width: datos[14] +'px',
-				height: datos[15] +'px'
-			}, tiempo, 'swing');
+			$cuadro4.animate(misAnimacionesJSON[numAnimacion].cuadro4, tiempo, 'swing');
 
-			$cuadro5.animate({
-				top: datos[16] +'px',
-				left: datos[17] +'px',
-				width: datos[18] +'px',
-				height: datos[19] +'px'
-			}, tiempo, 'swing');
+			$cuadro5.animate(misAnimacionesJSON[numAnimacion].cuadro5, tiempo, 'swing');
 
-			$cuadro6.animate({
-				top: datos[20] +'px',
-				left: datos[21] +'px',
-				width: datos[22] +'px',
-				height: datos[23] +'px'
-			}, tiempo, 'swing',  function () {
-				num_animacion++;
+			$cuadro6.animate(misAnimacionesJSON[numAnimacion].cuadro6, tiempo, 'swing',  function () {
+				numAnimacion++;
 				animar();
 			});
-
 		} else {
-			num_animacion = 0;
+			numAnimacion = 0;
 			$('#miBoton_animar').val("Animar"); //habilitamos botón de animar
 		}
 	}
@@ -88,7 +120,7 @@ $(document).ready(function(){
 		if ( $(this).val() == "Animar") {
 			animar();
 			$(this).val("Animación en Proceso"); //deshabilitamos botón de animar
-    	}
+    	} 
 	});
 
 });
