@@ -9,448 +9,86 @@ $(document).ready(function(){
 
 	var tiempo = 1000;
 
-	function animar_1(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
+	var myArray = [
+						[ 0, 0, 100, 100, 100, 0, 100, 100, 0, 100, 200, 200, 0, 300, 100, 100, 100, 300, 100, 100, 200, 0, 400, 100 ],
+						[ 0, 0, 200, 200, 200, 0, 100, 100, 200, 100, 100, 100, 0, 200, 100, 100, 0, 300, 100, 100, 100, 200, 200, 200 ],
+						[ 0, 0, 400, 100,  100, 0, 100, 100, 100, 100, 100, 100, 100, 200, 100, 100, 100, 300, 100, 100, 200, 0, 400, 100],
+						[ 0, 0, 100, 100, 100, 0, 100, 200, 0, 100, 200, 200, 0, 300, 100, 100, 200, 100, 200, 100, 100, 300, 100, 200],
+						[ 0, 0, 100, 300, 0, 100, 100, 300, 0, 200, 100, 100, 100, 200, 100, 100, 200, 200, 100, 100, 0, 300, 100, 300],
+						[ 0, 0, 300, 100, 0, 300, 100, 100, 100, 0, 200, 100, 100, 200, 200, 100, 200, 0, 300, 100, 200, 300, 100, 100],
+						[ 0, 0, 200, 100, 0, 200, 200, 100, 100, 0, 200, 100, 100, 200, 200, 100, 200, 0, 200, 100, 200, 200, 200, 100],
+						[ 0, 0, 300, 100, 0, 300, 100, 300, 100, 0, 100, 200, 100, 100, 200, 100, 200, 100, 100, 100, 200, 200, 100, 100],
+						[ 0, 0, 200, 100, 100, 0, 100, 200, 100, 100, 100, 200, 0, 200, 100, 200, 0, 300, 100, 200, 200, 200, 200, 100],
+						[ 0, 0, 200, 300, 0, 200, 100, 100, 0, 300, 100, 100, 100, 200, 200, 100, 200, 200, 100, 100, 200, 300, 100, 100]
+					  ];
 
-		$cuadro2.animate({
-			top: 100 +'px',
-			left: 0,
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
+	var num_animacion=0;
+	var datos;
 
-		$cuadro3.animate({
-			top: 0,
-			left: 100 +'px',
-			width: 200 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 100 +'px',
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 200 +'px',
-			left: 0,
-			width: 400 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing', animar_2);
+	function obtener_datos_de_animacion() {
+		return myArray[num_animacion];
 	}
 
-	function animar_2(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 200 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
+	function animar() {
+		console.log("animación num: "+num_animacion);
+		datos = obtener_datos_de_animacion();
+		if (num_animacion < 10) {
+			$cuadro1.animate({
+				top: datos[0] +'px',
+				left: datos[1] +'px',
+				width: datos[2] +'px',
+				height: datos[3] +'px'
+			}, tiempo, 'swing');
 
-		$cuadro2.animate({
-			top: 200 +'px',
-			left: 0,
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
+			$cuadro2.animate({
+				top: datos[4] +'px',
+				left: datos[5] +'px',
+				width: datos[6] +'px',
+				height: datos[7] +'px'
+			}, tiempo, 'swing');
 
-		$cuadro3.animate({
-			top: 200 +'px',
-			left: 100 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
+			$cuadro3.animate({
+				top: datos[8] +'px',
+				left: datos[9] +'px',
+				width: datos[10] +'px',
+				height: datos[11] +'px'
+			}, tiempo, 'swing');
 
-		$cuadro4.animate({
-			top: 0,
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
+			$cuadro4.animate({
+				top: datos[12] +'px',
+				left: datos[13] +'px',
+				width: datos[14] +'px',
+				height: datos[15] +'px'
+			}, tiempo, 'swing');
 
-		$cuadro5.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
+			$cuadro5.animate({
+				top: datos[16] +'px',
+				left: datos[17] +'px',
+				width: datos[18] +'px',
+				height: datos[19] +'px'
+			}, tiempo, 'swing');
 
-		$cuadro6.animate({
-			top: 100 +'px',
-			left: 200 +'px',
-			width: 200 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing', animar_3);
+			$cuadro6.animate({
+				top: datos[20] +'px',
+				left: datos[21] +'px',
+				width: datos[22] +'px',
+				height: datos[23] +'px'
+			}, tiempo, 'swing',  function () {
+				num_animacion++;
+				animar();
+			});
+
+		} else {
+			num_animacion = 0;
+			$('#miBoton_animar').val("Animar"); //habilitamos botón de animar
+		}
 	}
 
-	function animar_3(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 400 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 100 +'px',
-			left: 0,
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 100 +'px',
-			left: 100 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 100 +'px',
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 100 +'px',
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 200 +'px',
-			left: 0,
-			width: 400 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing', animar_4);
-	}
-
-	function animar_4(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 100 +'px',
-			left: 0,
-			width: 100 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 0,
-			left: 100 +'px',
-			width: 200 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 200 +'px',
-			left: 100 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 100 +'px',
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing', animar_5);
-	}
-
-	function animar_5(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 100 +'px',
-			height: 300 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 0,
-			left: 100 +'px',
-			width: 100 +'px',
-			height: 300 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 0,
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 100 +'px',
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 200 +'px',
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 300 +'px'
-		}, tiempo, 'swing', animar_6);
-	}
-
-	function animar_6(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 300 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 100 +'px',
-			left: 0,
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 100 +'px',
-			left: 200 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 200 +'px',
-			left: 0,
-			width: 300 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 200 +'px',
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing', animar_7);
-	}
-
-	function animar_7(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 0,
-			left: 200 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 100 +'px',
-			left: 0,
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 100 +'px',
-			left: 200 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 200 +'px',
-			left: 0,
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 200 +'px',
-			left: 200 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing', animar_8);
-	}
-
-	function animar_8(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 300 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 300 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 100 +'px',
-			left: 0,
-			width: 100 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 100 +'px',
-			left: 100 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 200 +'px',
-			left: 100 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 200 +'px',
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing', animar_9);
-	}
-
-	function animar_9(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 100 +'px',
-			left: 0,
-			width: 100 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 100 +'px',
-			left: 100 +'px',
-			width: 100 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 0,
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 200 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 200 +'px',
-			left: 200 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing', animar_10);
-	}
-
-	function animar_10(){
-		$cuadro1.animate({
-			top: 0,
-			left: 0,
-			width: 200 +'px',
-			height: 300 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro2.animate({
-			top: 0,
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro3.animate({
-			top: 0,
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro4.animate({
-			top: 100 +'px',
-			left: 200 +'px',
-			width: 200 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro5.animate({
-			top: 200 +'px',
-			left: 200 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-
-		$cuadro6.animate({
-			top: 200 +'px',
-			left: 300 +'px',
-			width: 100 +'px',
-			height: 100 +'px'
-		}, tiempo, 'swing');
-	}
-
-	$('#miBoton_animar').click(function() {
-		animar_1();	
+	$('#miBoton_animar').on("click", function() {
+		if ( $(this).val() == "Animar") {
+			animar();
+			$(this).val("Animación en Proceso"); //deshabilitamos botón de animar
+    	}
 	});
 
 });
