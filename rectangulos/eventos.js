@@ -1,9 +1,7 @@
 $(document).ready(function(){
-
 	var tiempo = 1000;
-
+	var $cuadro = $('.cuadro');
 	var numAnimacion=0;
-
 	var misAnimacionesJSON = 	
 						[
 							[	
@@ -90,20 +88,16 @@ $(document).ready(function(){
 
 	function animar() {
 		if (numAnimacion < misAnimacionesJSON.length) {
-			$('.cuadro').eq(0).animate(misAnimacionesJSON[numAnimacion][0], tiempo, 'swing');
-
-			$('.cuadro').eq(1).animate(misAnimacionesJSON[numAnimacion][1], tiempo, 'swing');
-
-			$('.cuadro').eq(2).animate(misAnimacionesJSON[numAnimacion][2], tiempo, 'swing');
-
-			$('.cuadro').eq(3).animate(misAnimacionesJSON[numAnimacion][3], tiempo, 'swing');
-
-			$('.cuadro').eq(4).animate(misAnimacionesJSON[numAnimacion][4], tiempo, 'swing');
-
-			$('.cuadro').eq(5).animate(misAnimacionesJSON[numAnimacion][5], tiempo, 'swing',  function () {
-				numAnimacion++;
-				animar();
-			});
+			for(var i=0; i < misAnimacionesJSON[numAnimacion].length; i++) {
+				if(i == (misAnimacionesJSON[numAnimacion].length - 1)) {
+					$cuadro.eq(i).animate(misAnimacionesJSON[numAnimacion][i], tiempo, 'swing', function () {
+						numAnimacion++;
+						animar();
+					});
+				} else {
+					$cuadro.eq(i).animate(misAnimacionesJSON[numAnimacion][i], tiempo, 'swing');
+				}
+			}
 		} else {
 			numAnimacion = 0;
 			$('#miBoton_animar').val("Animar"); //habilitamos botón de animar
