@@ -1,0 +1,1 @@
+.cuadrado{background-color:#00f;width:50px;height:50px;transition:all 1s ease}.cuadrado:hover{background-color:red;width:100px;height:100px}.cuadrado.otra{background-color:green;width:200px;height:200px}
