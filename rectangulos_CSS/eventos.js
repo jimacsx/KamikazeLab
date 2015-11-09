@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	var $cuadro = $('.cuadro');
-	var $contenedor = $('#contenedor');
-	var $cuadroA = $('.cuadroA');
 	var numAnimacion=0;
 	var misAnimacionesJSON = 	
 						[
@@ -88,17 +86,15 @@ $(document).ready(function(){
 						];
 
 	function animar() {
+		console.log("numAnimacion: "+numAnimacion);
 		if (numAnimacion < misAnimacionesJSON.length) { 
-			for(var i=0; i < misAnimacionesJSON[numAnimacion].length; i++) {
-				if(i == (misAnimacionesJSON[numAnimacion].length -1)) {
-					$cuadro.eq(i).addClass('cuadroA').css(misAnimacionesJSON[numAnimacion][i]);
-					$cuadro.eq(i).on('transitionend webkitTransitionEnd oTransitionEnd', function (e) {
-						console.log("numAnimacion: "+numAnimacion);
-						numAnimacion++;			
+			for(var i=0; i < misAnimacionesJSON[numAnimacion].length; i++) { 
+				$cuadro.eq(i).css(misAnimacionesJSON[numAnimacion][i]);
+				if(i == (misAnimacionesJSON[numAnimacion].length -1)) { 
+					setTimeout(function() {
+						numAnimacion++;
 						animar();
-					});
-				} else {
-					$cuadro.eq(i).addClass('cuadroA').css(misAnimacionesJSON[numAnimacion][i]);
+					}, 1000);
 				}
 			}
 		} else {
