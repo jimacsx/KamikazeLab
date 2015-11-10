@@ -1,7 +1,5 @@
 $(document).ready(function(){
-	var tiempo = 1000;
 	var $cuadro = $('.cuadro');
-	var numAnimacion=0;
 	var misAnimacionesJSON = 	
 						[
 							[	
@@ -85,23 +83,14 @@ $(document).ready(function(){
 								{"top": "200px", "left": "300px", "width": "100px", "height":"100px"}
 							]
 						];
-						
+
 	function animar() {
-		console.log("numAnimacion: "+numAnimacion);
-		if (numAnimacion < misAnimacionesJSON.length) { 
-			for(var i=0; i < misAnimacionesJSON[numAnimacion].length; i++) { 
-				$cuadro.eq(i).css(misAnimacionesJSON[numAnimacion][i]);
-				if(i == (misAnimacionesJSON[numAnimacion].length -1)) { 
-					setTimeout(function() {
-						numAnimacion++;
-						animar();
-					}, 1000);
-				}
-			}
-		} else {
-			numAnimacion = 0;
-			$('#miBoton_animar').val("Animar"); //habilitamos botón de animar
-		}
+		$cuadro.eq(0).addClass('cuadroA').css('animation-name', 'animar1');
+		$cuadro.eq(1).addClass('cuadroA').css('animation-name', 'animar2');
+		$cuadro.eq(2).addClass('cuadroA').css('animation-name', 'animar3');
+		$cuadro.eq(3).addClass('cuadroA').css('animation-name', 'animar4');
+		$cuadro.eq(4).addClass('cuadroA').css('animation-name', 'animar5');
+		$cuadro.eq(5).addClass('cuadroA').css('animation-name', 'animar6');
 	}
 
 	$('#miBoton_animar').on("click", function() {
