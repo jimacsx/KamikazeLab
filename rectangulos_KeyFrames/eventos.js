@@ -1,8 +1,6 @@
 $(document).ready(function(){
 	var $cuadro = $('.cuadro');
-	var numCuadro=0;
-	var numAnimacion=0;
-	var miKeyframe;
+	var numCuadro=0, numAnimacion=0, miKeyframe, anterior;
 	var misAnimacionesJSON = 	
 						[
 							[	
@@ -86,7 +84,10 @@ $(document).ready(function(){
 								{"top": "200px", "left": "300px", "width": "100px", "height":"100px"}
 							]
 						];
-
+	/*
+	localizarKeyFrame() recibe como parametro el nombre del keyframe a buscar dentro de nuestra hoja de estilos,
+	si éste se encuentra regresa cada unao de sus reglas (%) sino regresa null
+	*/
   	function localizarKeyFrame(nombreKeyframe) {
 	    var ss = document.styleSheets;
 	    for (var i = 0; i < ss.length; ++i) {
@@ -99,6 +100,7 @@ $(document).ready(function(){
 	    return null;
 	}
 
+	/*resetearCuadros() limpia divs con clase '.cuadro' para poder animar nuevamente*/
   	function resetearCuadros() {
 		for(var i=0; i < $cuadro.size(); i++) {
 			$cuadro.eq(i).removeClass('cuadroM');
@@ -106,13 +108,12 @@ $(document).ready(function(){
 		}
 	}
 
-
+	/*animar() - función principal que realiza las 10 animaciones declaradas en el JSON*/
 	function animar() {
 		console.log(numAnimacion);
-		var anterior;
 		if(numAnimacion < misAnimacionesJSON.length) {
-			if(numAnimacion == 0) {
-				anterior = 9;
+			if(numAnimacion == 0) { 
+				anterior = (misAnimacionesJSON.length - 1);
 			} else {
 				anterior = numAnimacion-1;
 			}
@@ -122,13 +123,12 @@ $(document).ready(function(){
 				miKeyframe.deleteRule("100%");
 				miKeyframe.appendRule("0% { top: "+ misAnimacionesJSON[anterior][numCuadro].top + "; left: "+ misAnimacionesJSON[anterior][numCuadro].left + "; width: "+ misAnimacionesJSON[anterior][numCuadro].width + "; height: "+ misAnimacionesJSON[anterior][numCuadro].height +";  }");
 				miKeyframe.appendRule("100% { top: "+ misAnimacionesJSON[numAnimacion][numCuadro].top + "; left: "+ misAnimacionesJSON[numAnimacion][numCuadro].left + "; width: "+ misAnimacionesJSON[numAnimacion][numCuadro].width + "; height: "+ misAnimacionesJSON[numAnimacion][numCuadro].height +";  }");
-				console.log(miKeyframe);
 				$cuadro.eq(numCuadro).addClass('cuadroM').css('animation-name', 'mover'+numCuadro);
 				if(numCuadro == (misAnimacionesJSON[numAnimacion].length -1)) { 
 					setTimeout(function() {
 						numAnimacion++;
 						animar();
-					}, 1000);	
+					}, 1000);
 				}
 			}
 		} else {
