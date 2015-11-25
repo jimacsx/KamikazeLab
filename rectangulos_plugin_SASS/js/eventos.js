@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	var $cuadro = $('.cuadro');
-	var numAnimacion=0;
+	
 	var misAnimacionesJSON = 	
 						[
 							[	
@@ -84,27 +83,26 @@ $(document).ready(function(){
 								{"top": "200px", "left": "300px", "width": "100px", "height":"100px"}
 							]
 						];
+	
+	var $cuadro = $('.cuadro');
+	var tiempo = 1000;
+	var nombreEasing =  'easeInCubic';
+	var numAnimacion=0;
 
-	var nombreAnimacion = 'animated fadeInRight';
-	var animacionEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-
+	/*
+	animar() - utiliza plugin transit (transition(options, [duration], [easing], [complete]))
+	para realizar cada una de las animaciones de los rectángulos 	declaros en el JSON
+	*/
 	function animar() {
-		console.log("numAnimacion: "+numAnimacion);
-		
-		if (numAnimacion < misAnimacionesJSON.length) { 
-
-			for(var i=0; i < misAnimacionesJSON[numAnimacion].length; i++) { 
-				
-				$cuadro.eq(i).css(misAnimacionesJSON[numAnimacion][i]);
-				$cuadro.eq(i).addClass(nombreAnimacion).one(animacionEnd, function() {
-					$(this).removeClass(nombreAnimacion);
-				});
-
-				if(i == (misAnimacionesJSON[numAnimacion].length -1)) { 
-					setTimeout(function() {
+		if (numAnimacion < misAnimacionesJSON.length) {
+			for(var i=0; i < misAnimacionesJSON[numAnimacion].length; i++) {
+				if(i == (misAnimacionesJSON[numAnimacion].length - 1)) {
+					$cuadro.eq(i).transition(misAnimacionesJSON[numAnimacion][i], tiempo, nombreEasing, function () {
 						numAnimacion++;
 						animar();
-					}, 1500);
+					});
+				} else {
+					$cuadro.eq(i).transition(misAnimacionesJSON[numAnimacion][i], tiempo, nombreEasing);
 				}
 			}
 		} else {
@@ -115,8 +113,8 @@ $(document).ready(function(){
 
 	$('#miBoton_animar').on("click", function() {
 		if ( $(this).val() == "Animar") {
-			$(this).val("Animación en Proceso"); //deshabilitamos botón de animar
 			animar();
+			$(this).val("Animación en Proceso"); //deshabilitamos botón de animar
     	} 
 	});
 
