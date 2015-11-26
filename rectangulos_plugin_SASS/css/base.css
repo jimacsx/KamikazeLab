@@ -1,0 +1,17 @@
+body {
+  height: 100%;
+  margin: 0; }
+
+html {
+  height: 100%; }
+
+#miBoton_animar {
+  display: block;
+  margin: 20px auto; }
+
+#contenedor {
+  margin: 20px auto;
+  position: relative;
+  background-color: silver;
+  width: 400px;
+  height: 300px; }

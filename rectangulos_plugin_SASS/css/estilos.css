@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Merriweather|Josefin+Slab|Oswald|Bree+Serif);
 body {
   height: 100%;
   margin: 0; }
@@ -7,7 +8,12 @@ html {
 
 #miBoton_animar {
   display: block;
-  margin: 20px auto; }
+  margin: 20px auto;
+  cursor: pointer;
+  font-family: "Bree Serif", Helvetica, sans-serif; }
+
+#miBoton_animar {
+  background: transparent; }
 
 #contenedor {
   margin: 20px auto;

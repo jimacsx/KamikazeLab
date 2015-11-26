@@ -86,7 +86,7 @@ $(document).ready(function(){
 	
 	var $cuadro = $('.cuadro');
 	var tiempo = 1000;
-	var nombreEasing =  'easeInCubic';
+	var nombreEasing =  'easeInOutCirc'; //'easeInSine', 'easeInCirc', 'easeOutCirc'
 	var numAnimacion=0;
 
 	/*
