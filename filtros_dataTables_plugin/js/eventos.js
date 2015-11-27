@@ -1,6 +1,4 @@
-var registros = [
-  ["", "Av Aztecas", "San Rafael", "2000", "", "Coacalco", "VIMEX", "10", "botones"]
-];
+var registros =[["", "Av Aztecas", "San Rafael", "2000", "", "Coacalco", "VIMEX", "10", "Botones"] ];
 
 $(document).ready(function() {
 
@@ -9,19 +7,10 @@ $(document).ready(function() {
     scrollX: true,    //scroll horizontal
     scrollCollapse: 'true',
     stateSave: true,  //salva el estado actual de la tabla
-
-    data: registros,
-    columns: [
-      { title: "Imagen" },
-      { title: "Calle" },
-      { title: "Colonia" },
-      { title: "Precio" },
-      { title: "Tipo" },
-      { title: "Desarrollo" },
-      { title: "Desarrollador" },
-      { title: "Solicitudes" },
-      { title: "Acciones" },
-    ]
+    //para ocupar una BD creada en mysql se utilizan las siguientes lineas
+    "processing": true,
+    "serverSide": true,
+    "ajax": 'php/script.php'
   });
 
 });
