@@ -1,0 +1,18 @@
+body {
+  height: 100%;
+  margin: 0; 
+}
+
+html {
+  height: 100%; 
+}
+
+header {
+	width: 100%;
+	height: 100px;
+	background-color: #313131;
+}
+
+#filtros {
+	padding: 40px 0px 85px;
+}
