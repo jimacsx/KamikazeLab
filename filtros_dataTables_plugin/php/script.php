@@ -1,25 +1,21 @@
 <?php
 
-	$table = 'casas';
+	$table = 'city';
 
-	$primaryKey = 'imagen';
+	$primaryKey = 'ID';
 
 	$columns = array(
-		array('db' => 'imagen', 'dt' => 0),
-		array('db' => 'calle', 'dt' => 1),
-		array('db' => 'colonia', 'dt' => 2),
-		array('db' => 'precio', 'dt' => 3),
-		array('db' => 'tipo', 'dt' => 4),
-		array('db' => 'desarrollo', 'dt' => 5),
-		array('db' => 'desarrollador', 'dt' => 6),
-		array('db' => 'solicitudes', 'dt' => 7),
-		array('db' => 'acciones', 'dt' => 8)
+		array('db' => 'ID', 'dt' => 0),
+		array('db' => 'Name', 'dt' => 1),
+		array('db' => 'CountryCode', 'dt' => 2),
+		array('db' => 'District', 'dt' => 3),
+		array('db' => 'Population', 'dt' => 4)
 	);
 
 	$sql_details = array(
 		'user' => 'root',
 		'pass' => '',
-		'db' => 'tucanton',
+		'db' => 'world',
 		'host' => 'localhost'
 	);
 
@@ -29,4 +25,5 @@
 	echo json_encode(
 		SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
 	);
+
 ?>
