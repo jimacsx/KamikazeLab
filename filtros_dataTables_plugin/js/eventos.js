@@ -9,7 +9,7 @@ $(document).ready(function() {
     //para ocupar una BD creada en mysql se utilizan las siguientes lineas
     "bProcessing": true,
     "bServerSide": true,
-    "sAjaxSource": 'php/desarrolladores.php'
+    "sAjaxSource": 'php/desarrollos.php'
   });
 
 });
