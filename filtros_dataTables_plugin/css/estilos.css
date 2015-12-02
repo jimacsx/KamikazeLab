@@ -16,3 +16,13 @@ header {
 #filtros {
 	padding: 40px 0px 85px;
 }
+
+#filtros img {
+	width: 120px;
+}
+
+.btn-orange {
+	padding: 0px;
+	cursor: pointer;
+	background-color: #fd930f;
+}
